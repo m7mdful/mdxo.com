@@ -3,72 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Switch</title>
+  <title>Random Dark Mode Color Change</title>
   <style>
-    /* Default style for the switch */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 60px;
-      height: 34px;
+    body {
+      background-color: #2c3e50;
+      color: #ecf0f1;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Default styling for the switch's input */
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    /* Styling for the switch's track */
-    .switch .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    /* Styling for the switch's thumb (the part that moves) */
-    .switch .slider:before {
-      position: absolute;
-      content: "";
-      height: 26px;
-      width: 26px;
-      left: 4px;
-      bottom: 4px;
-      background-color: white;
-      -webkit-transition: .4s;
-      transition: .4s;
-    }
-
-    /* Styling for the switch when it's checked (on) */
-    .switch input:checked + .slider {
-      background-color: #2196F3;
-    }
-
-    /* Styling for the thumb when the switch is checked (on) */
-    .switch input:checked + .slider:before {
-      -webkit-transform: translateX(26px);
-      -ms-transform: translateX(26px);
-      transform: translateX(26px);
+    #colorChangeElement {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      transition: background-color 0.3s ease;
     }
   </style>
 </head>
 <body>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" dataSlot="icon" className="w-6 h-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-      </svg>
-      
-  <!-- The switch -->
-  <label class="switch">
-    <input type="checkbox">
-    <span class="slider"></span>
-  </label>
+
+<div id="colorChangeElement"></div>
+
+<script>
+
+
+  function changeDarkModeColor() {
+    var body = document.body;
+    var element = document.getElementById('colorChangeElement');
+    var randomColor = getRandomDarkColor();
+
+    body.style.backgroundColor = randomColor;
+    body.style.color = getRandomDarkColor(); // Change text color as well
+
+    element.style.backgroundColor = randomColor;
+  }
+
+  // You can trigger the dark mode color change event on some user interaction, for example, a button click.
+  document.getElementById('colorChangeElement').addEventListener('click', changeDarkModeColor);
+</script>
 
 </body>
 </html>
